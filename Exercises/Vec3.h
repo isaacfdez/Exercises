@@ -13,6 +13,7 @@ public:
 	inline ~Vec3() {}
 
 	inline Vec3& operator+(const Vec3& anotherVec3) { return *new Vec3(x+anotherVec3.x, y + anotherVec3.y, z + anotherVec3.z); }
+	inline friend ostream& operator<<(ostream& os, const Vec3& anotherVec3) { return os << "(" << anotherVec3.x << ", " << anotherVec3.y << ", " << anotherVec3.z << ")"; }
 
 	Vec3& Normalize();
 	float distanceTo(const Vec3& anotherVec3);
