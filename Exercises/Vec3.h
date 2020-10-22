@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 using namespace std;
 
@@ -6,19 +7,20 @@ class Vec3
 {
 public:
 
-	Vec3();
-	Vec3(int x, int y, int z);
-	Vec3(const Vec3& anotherVec3);
-	~Vec3();
+	inline Vec3() : x(0), y(0), z(0) {}
+	inline Vec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+	inline Vec3(const Vec3& anotherVec3) { x = anotherVec3.x; y = anotherVec3.y; z = anotherVec3.z; }
+	inline ~Vec3() {}
 
-	void Normalize();
-	Vec3& distanceTo(Vec3&);
-	Vec3& dot_product(Vec3&);
-	Vec3& cross_product(Vec3&);
-	Vec3& angle_between(Vec3&);
+	inline Vec3& operator+(const Vec3& anotherVec3) { return *new Vec3(x+anotherVec3.x, y + anotherVec3.y, z + anotherVec3.z); }
+
+	Vec3& Normalize();
+	float distanceTo(const Vec3& anotherVec3);
+	float dot_product(const Vec3& anotherVec3);
+	Vec3& cross_product(const Vec3& anotherVec3);
+	float angle_between(const Vec3& anotherVec3);
 
 private:
-	int* elementsInVector;
-	float* vectorNormalized;
+	float x, y, z;
 };
 

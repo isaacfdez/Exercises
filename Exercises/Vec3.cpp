@@ -1,47 +1,31 @@
+#include <iostream>
 #include "Vec3.h"
 
-Vec3::Vec3()
+using namespace std;
+
+
+Vec3& Vec3::Normalize()
 {
-	elementsInVector = new int[0];
-	vectorNormalized = new float[0];
+	float magnitud = sqrt((x * x) + (y * y) + (z * z));
+	return *new Vec3(x / magnitud, y / magnitud, z / magnitud);
 }
 
-Vec3::Vec3(int x, int y, int z)
+float Vec3::distanceTo(const Vec3& anotherVec3)
 {
-	elementsInVector = new int[x, y, z];
-	vectorNormalized = new float[0];
+	return sqrt(((x - anotherVec3.x) * (x - anotherVec3.x)) + ((y - anotherVec3.y) * (y - anotherVec3.y)) + ((z - anotherVec3.z) * (z - anotherVec3.z)));
 }
 
-Vec3::Vec3(const Vec3& anotherVec3)
+float Vec3::dot_product(const Vec3& anotherVec3)
 {
-	elementsInVector = anotherVec3.elementsInVector;
-	vectorNormalized = anotherVec3.vectorNormalized;
+	return (x*anotherVec3.x)+ (y * anotherVec3.y) + (z * anotherVec3.z);
 }
 
-Vec3::~Vec3()
+Vec3& Vec3::cross_product(const Vec3& anotherVec3)
 {
+	return *new Vec3(((y*anotherVec3.z)-(z*anotherVec3.y)), ((z * anotherVec3.x) - (x * anotherVec3.z)), ((x * anotherVec3.y) - (y * anotherVec3.x)));
 }
 
-void Vec3::Normalize()
+float Vec3::angle_between(const Vec3& anotherVec3)
 {
-}
-
-Vec3& Vec3::distanceTo(Vec3& anotherVec3)
-{
-	return *this;
-}
-
-Vec3& Vec3::dot_product(Vec3& anotherVec3)
-{
-	return *this;
-}
-
-Vec3& Vec3::cross_product(Vec3& anotherVec3)
-{
-	return *this;
-}
-
-Vec3& Vec3::angle_between(Vec3& anotherVec3)
-{
-	return *this;
+	return acos(dot_product(anotherVec3) / sqrt((x * x + y * y + z * z) * (anotherVec3.x * anotherVec3.x + anotherVec3.y * anotherVec3.y + anotherVec3.z * anotherVec3.z)));
 }
