@@ -9,11 +9,11 @@ public:
 	String(const String& anotherString);
 	String(String&& anotherString);
 
-	const int length();
+	int length() const;
 	void clear();
 
 	String operator+(const String& anotherString);
-	String operator==(const String& anotherString);
+	bool operator==(const String& anotherString);
 
 private:
 	char* sentence;
