@@ -16,7 +16,7 @@ String::String(const char* newSentence)
 
 	sentence = new char[length];
 
-	for (int i = 0; i < length; i++) sentence[i] = newSentence[i];
+	for (int i = 0; i <= length; ++i) sentence[i] = newSentence[i];
 		
 	sentence[length] = '\0';
 		
@@ -36,7 +36,7 @@ String::String(String&& anotherString)
 int String::length() const
 {
 	int length = 0;
-	while (sentence[length] != '\0') length++;
+	while (sentence[length] != '\0') ++length;
 
 	return length;
 }
@@ -58,7 +58,7 @@ String String::operator+(const String& anotherString)
 	while(sentence[i] != '\0')
 	{
 		combinedSentences[i] = sentence[i];
-		i++;
+		++i;
 	}
 
 	int j = 0;
@@ -66,8 +66,8 @@ String String::operator+(const String& anotherString)
 	while (anotherString.sentence[j] != '\0')
 	{
 		combinedSentences[i] = anotherString.sentence[j];
-		i++;
-		j++;
+		++i;
+		++j;
 	}
 	combinedSentences[i] = '\0';
 	return String(combinedSentences);
@@ -80,7 +80,7 @@ bool String::operator==(const String& anotherString)
 	while (anotherString.sentence[i] != '\0')
 	{
 		if (sentence[i] != anotherString.sentence[i]) return false;
-		i++;
+		++i;
 	}
 	return true;
 }
