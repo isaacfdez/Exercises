@@ -10,24 +10,16 @@ String::String()
 
 String::String(const char* newSentence)
 {
-	if (newSentence == nullptr)
-	{
-		sentence = new char[1];
-		sentence[0] = '\0';
-	}
-	else
-	{
-		int length = 0;
-		while (newSentence[length] != '\0') ++length;
-		++length;
+	int length = 0;
+	while (newSentence[length] != '\0') ++length;
+	++length;
 
-		sentence = new char[length];
+	sentence = new char[length];
 
-		for (int i = 0; i < length; i++) sentence[i] = newSentence[i];
+	for (int i = 0; i < length; i++) sentence[i] = newSentence[i];
 		
-		sentence[length] = '\0';
-
-	}
+	sentence[length] = '\0';
+		
 }
 
 String::String(const String& anotherString)
