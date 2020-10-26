@@ -4,6 +4,9 @@
 class String
 {
 public:
+
+	char* sentence;
+
 	String();
 	String(const char* newSentence);
 	String(const String& anotherString);
@@ -15,7 +18,5 @@ public:
 	String operator+(const String& anotherString);
 	bool operator==(const String& anotherString);
 
-private:
-	char* sentence;
 };
 
